@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Book-App</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="assets/book-solid.svg">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div class="wrapper-pop-up">
+            <div class="auth-popup" id="authPopup">
+                <span class="close-btn">&times;</span>
+                
+                <div id="signupForm">
+                    <h2>Sign Up</h2>
+                    <input type="text" id="signupName" placeholder="Enter Name">
+                    <input type="email" id="signupEmail" placeholder="Enter Email">
+                    <input type="password" id="signupPassword" placeholder="Enter Password">
+                    <button onclick="signup()">Sign Up</button>
+                    <p>Already have an account? <a href="#" onclick="toggleAuthForms()">Sign In</a></p>
+                </div>
+            
+                <div id="signinForm" style="display: none;">
+                    <h2>Sign In</h2>
+                    <input type="email" id="signinEmail" placeholder="Enter Email">
+                    <input type="password" id="signinPassword" placeholder="Enter Password">
+                    <button onclick="signin()">Sign In</button>
+                    <p>Don't have an account? <a href="#" onclick="toggleAuthForms()">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <span id="successMessage" class="success-message"></span>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <div class="popup-body">
+                    <img id="popup-image" src="" alt="Book Image">
+        
+                    <div class="popup-info">
+                        <h2 id="popup-title"></h2>
+                        <p id="popup-author"></p>
+                        <p id="popup-description"></p>
+                        <div class="buy-links">
+                            <a id="amazon-link" href="#" target="_blank"><i class="fab fa-amazon"></i></a>
+                            <a id="apple-link" href="#" target="_blank"><i class="fab fa-apple"></i></a>
+                            <a id="barnes-link" href="#" target="_blank"><i class="fas fa-book"></i></a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="popup-footer">
+                    <button id="add-to-list">Add to Shopping List</button>
+                </div>
+            </div>
+        </div>
+          
+        <header class="flex justify-between items-center h-15 px-5"> 
+            <a href=""><div class="text-2xl font-bold"><i class="fa-solid fa-book text-indigo-600"></i><span class="ml-2">Book</span></div></a>
+            <div class="flex justify-between items-center gap-5 h-full">
+                <div id="toggle-container">
+                    <div id="circle"></div>
+                </div>
+                <div class="sign-up flex justify-between items-center border-1 w-44 h-[80%] px-4 rounded-2xl bg-indigo-600 hover:bg-yellow-300 transition-all duration-400 ease-in-out">
+                    <button class="text-white w-full flex justify-between items-center cursor-pointer">
+                        <span>Sign up</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-300"></i>
+                    </button>
+                   
+                </div>
+                
+                <div class="sidebar sign-up">
+                    <button><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </header>
+        <main class="main-wrapper mt-10">
+            <section class="flex justify-between">
+                <aside class="w-[25%]">
+                    <ul class="sidebar-categories cursor-pointer">
+                        <li class="category-item active" data-id="all-category">All categories</li>
+                    </ul>
+                    <div class="support-container">
+                        <h2 class="text-white font-bold text-3xl mb-10">Support Ukraine</h2>
+                        <div class="swiper-container">
+                            <div class="logoContainer">
+                                <div class="logo-item">
+                                    <p>01</p>
+                                    <a href="https://www.savethechildren.net/what-we-do/emergencies/war-ukraine" target="_blank"><img src="assets/Book-App/01-found-2.60510847.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>02</p>
+                                    <a href="https://www.projecthope.org/region/europe/ukraine/" target="_blank"><img src="assets/Book-App/02-found-2.ca1470b9.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>03</p>
+                                    <a href="https://u24.gov.ua/" target="_blank"><img src="assets/Book-App/03-found-1.89276286.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>04</p>
+                                    <a href="https://internationalmedicalcorps.org/country/ukraine/" target="_blank"><img src="assets/Book-App/04-found-1.cbff70d4.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>05</p>
+                                    <a href="https://www.msf.org/ukraine" target="_blank"><img src="assets/Book-App/05-found-1.0fdab6a1.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>06</p>
+                                    <a href="https://www.razomforukraine.org/" target="_blank"><img src="assets/Book-App/06-found-1.c5359439.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>07</p>
+                                    <a href="https://www.actionagainsthunger.org/location/europe/ukraine/" target="_blank"><img src="assets/Book-App/07-found-2.ee2ee4c4.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>08</p>
+                                    <a href="https://www.wvi.org/emergencies/ukraine" target="_blank"><img src="assets/Book-App/08-found-1.7aca5d21.png" alt=""></a>
+                                </div>
+                                <div class="logo-item">
+                                    <p>09</p>
+                                    <a href="https://prytulafoundation.org/en" target="_blank"><img src="assets/Book-App/09-found-1.8d6aef68.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="swiper-btn-next cursor-pointer" type="button"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </aside>
+                <div class="main w-[72%]"></div>
+            </section>
+            
+        </main>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
